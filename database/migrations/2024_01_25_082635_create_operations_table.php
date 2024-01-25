@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('operations', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('balance_id')->index();
-            $table->decimal('amount', 13, 2);
+            $table->decimal('operation', 13, 2);
             $table->string('description');
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('operations');
     }
 };
