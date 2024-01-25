@@ -15,7 +15,7 @@ class OperationRun extends Command
      */
     protected $signature = 'operation:run
                             {user : Email или ID пользователя}
-                            {operation : Операция, например "+1000" или "-123.45"}
+                            {--O|operation= : Операция, например "+1000" или "-123.45"}
                             {--D|description= : Описание}';
 
     /**
@@ -35,7 +35,7 @@ class OperationRun extends Command
             return 0;
         }
 
-        $result = $service->runOperation($user, $this->argument('operation'), $this->option('description'));
+        $result = $service->runOperation($user, $this->option('operation'), $this->option('description'));
 
         if ($result) {
             $this->info('Успешно');

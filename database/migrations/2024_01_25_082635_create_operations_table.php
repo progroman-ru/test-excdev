@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('operations', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('balance_id')->index();
-            $table->decimal('operation', 13, 2);
+            $table->string('operation');
             $table->string('description');
             $table->timestamp('created_at')->useCurrent();
         });
